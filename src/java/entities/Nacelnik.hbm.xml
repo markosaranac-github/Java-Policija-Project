@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 6, 2019 2:57:44 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entities.Nacelnik" table="nacelnik" catalog="policija" optimistic-lock="version">
+        <id name="nacId" type="int">
+            <column name="nac_id" />
+            <generator class="assigned" />
+        </id>
+        <property name="nacIme" type="string">
+            <column name="nac_ime" length="45" not-null="true" />
+        </property>
+        <property name="nacPrezime" type="string">
+            <column name="nac_prezime" length="45" not-null="true" />
+        </property>
+        <property name="nacDtrodj" type="date">
+            <column name="nac_dtrodj" length="10" />
+        </property>
+        <property name="nacTelefon" type="string">
+            <column name="nac_telefon" length="11" />
+        </property>
+        <property name="nacAdresa" type="string">
+            <column name="nac_adresa" length="45" />
+        </property>
+        <property name="nacKorisnickoIme" type="string">
+            <column name="nac_korisnickoIme" length="10" not-null="true" />
+        </property>
+        <property name="nacSifra" type="string">
+            <column name="nac_sifra" length="10" not-null="true" />
+        </property>
+        <set name="policijskaStanicas" table="policijska_stanica" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="nac_id" not-null="true" />
+            </key>
+            <one-to-many class="entities.PolicijskaStanica" />
+        </set>
+    </class>
+</hibernate-mapping>

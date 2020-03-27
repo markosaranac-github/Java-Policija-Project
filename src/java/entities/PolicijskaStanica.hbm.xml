@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 6, 2019 2:57:44 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entities.PolicijskaStanica" table="policijska_stanica" catalog="policija" optimistic-lock="version">
+        <id name="polId" type="int">
+            <column name="pol_id" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="nacelnik" class="entities.Nacelnik" lazy="false" fetch="select">
+            <column name="nac_id" not-null="true" />
+        </many-to-one>
+        <property name="polAdresa" type="string">
+            <column name="pol_adresa" length="45" not-null="true" />
+        </property>
+        <property name="polTelefon" type="string">
+            <column name="pol_telefon" length="11" not-null="true" />
+        </property>
+        <set name="inspektors" table="inspektor" inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="pol_id" />
+            </key>
+            <one-to-many class="entities.Inspektor" />
+        </set>
+    </class>
+</hibernate-mapping>

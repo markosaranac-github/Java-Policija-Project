@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 6, 2019 2:57:44 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entities.Osteceni" table="osteceni" catalog="policija" optimistic-lock="version">
+        <id name="ostId" type="int">
+            <column name="ost_id" />
+            <generator class="assigned" />
+        </id>
+        <property name="ostIme" type="string">
+            <column name="ost_ime" length="45" not-null="true" />
+        </property>
+        <property name="ostPrezime" type="string">
+            <column name="ost_prezime" length="45" not-null="true" />
+        </property>
+        <property name="ostDtrodj" type="date">
+            <column name="ost_dtrodj" length="10" />
+        </property>
+        <property name="ostTelefon" type="string">
+            <column name="ost_telefon" length="11" />
+        </property>
+        <property name="ostAdresa" type="string">
+            <column name="ost_adresa" length="45" />
+        </property>
+    </class>
+</hibernate-mapping>

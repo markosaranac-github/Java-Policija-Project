@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 6, 2019 2:57:44 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entities.Inspektor" table="inspektor" catalog="policija" optimistic-lock="version">
+        <id name="insId" type="int">
+            <column name="ins_id" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="policijskaStanica" class="entities.PolicijskaStanica" fetch="select">
+            <column name="pol_id" />
+        </many-to-one>
+        <property name="insIme" type="string">
+            <column name="ins_ime" length="45" not-null="true" />
+        </property>
+        <property name="insPrezime" type="string">
+            <column name="ins_prezime" length="45" not-null="true" />
+        </property>
+        <property name="insDtrodj" type="date">
+            <column name="ins_dtrodj" length="10" />
+        </property>
+        <property name="insTelefon" type="string">
+            <column name="ins_telefon" length="11" />
+        </property>
+        <property name="insAdresa" type="string">
+            <column name="ins_adresa" length="45" />
+        </property>
+        <property name="insKorisnickoIme" type="string">
+            <column name="ins_korisnickoIme" length="10" not-null="true" unique="true" />
+        </property>
+        <property name="insSifra" type="string">
+            <column name="ins_sifra" length="10" not-null="true" unique="true" />
+        </property>
+    </class>
+</hibernate-mapping>

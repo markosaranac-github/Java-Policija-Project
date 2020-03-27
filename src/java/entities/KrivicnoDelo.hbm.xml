@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 6, 2019 2:57:44 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entities.KrivicnoDelo" table="krivicno_delo" catalog="policija" optimistic-lock="version">
+        <id name="kriId" type="int">
+            <column name="kri_id" />
+            <generator class="assigned" />
+        </id>
+        
+        <set name="inspektori" cascade="save-update" table="kri_ins" >
+         <key column="kri_id"/>
+         <many-to-many column="ins_id" class="entities.Inspektor"/>
+        </set>
+        
+        <set name="osteceni" cascade="save-update" table="kri_ost" >
+         <key column="kri_id"/>
+         <many-to-many column="ost_id" class="entities.Osteceni"/>
+        </set>
+        
+        <set name="osumnjiceni" cascade="save-update" table="kri_osu" >
+         <key column="kri_id"/>
+         <many-to-many column="osu_id" class="entities.Osumnjiceni"/>
+        </set>
+        
+        <set name="svedoci" cascade="save-update" table="kri_sve" >
+         <key column="kri_id"/>
+         <many-to-many column="sve_id" class="entities.Svedok"/>
+        </set>
+        
+        <property name="kriPocetak" type="date">
+            <column name="kri_pocetak" length="10" />
+        </property>
+        <property name="kriKraj" type="date">
+            <column name="kri_kraj" length="10" />
+        </property>
+        <property name="kriClan" type="java.lang.Integer">
+            <column name="kri_clan" />
+        </property>
+        <property name="kriOpis" type="string">
+            <column name="kri_opis" length="500" />
+        </property>
+    </class>
+</hibernate-mapping>

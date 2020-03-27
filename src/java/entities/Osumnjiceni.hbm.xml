@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 6, 2019 2:57:44 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entities.Osumnjiceni" table="osumnjiceni" catalog="policija" optimistic-lock="version">
+        <id name="osuId" type="int">
+            <column name="osu_id" />
+            <generator class="assigned" />
+        </id>
+        <property name="osuIme" type="string">
+            <column name="osu_ime" length="45" not-null="true" />
+        </property>
+        <property name="osuPrezime" type="string">
+            <column name="osu_prezime" length="45" not-null="true" />
+        </property>
+        <property name="osuDtrodj" type="date">
+            <column name="osu_dtrodj" length="10" />
+        </property>
+        <property name="osuAdresa" type="string">
+            <column name="osu_adresa" length="45" />
+        </property>
+        <property name="osuTelefon" type="string">
+            <column name="osu_telefon" length="11" />
+        </property>
+        <property name="osuVisina" type="java.lang.Integer">
+            <column name="osu_visina" />
+        </property>
+        <property name="osuTezina" type="java.lang.Integer">
+            <column name="osu_tezina" />
+        </property>
+        <property name="osuOpis" type="string">
+            <column name="osu_opis" length="500" />
+        </property>
+    </class>
+</hibernate-mapping>
